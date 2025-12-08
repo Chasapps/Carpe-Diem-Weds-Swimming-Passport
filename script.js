@@ -136,7 +136,7 @@ function renderList(){
   row.innerHTML = `
     <div>
       <div class="pool-name">${p.name}</div>
-      <div class="coords">${p.lat.toFixed(5)}, ${p.lng.toFixed(5)}</div>
+      
     </div>
     <button class="stamp-chip ${stamped ? 'stamped' : ''}" data-name="${p.name}">
       ${stamped ? (stampDate ? `Stamped • ${stampDate}` : 'Stamped') : 'Not yet'}
@@ -257,8 +257,8 @@ function renderStamps(popName = null){
            style="${stamped ? 'opacity:.98' : 'opacity:.45; filter:grayscale(1)'}">
         <img src="stamp.svg" alt="stamp">
         <div class="label">${stamped ? p.name.split(' ')[0].toUpperCase() : 'NOT STAMPED'}</div>
-        <div class="stamp-date on-stamp">${stampDate || ''}</div>
       </div>
+      <div class="stamp-date">${stampDate || ''}</div>
     `;
 
     const dateEl = card.querySelector('.stamp-date');
