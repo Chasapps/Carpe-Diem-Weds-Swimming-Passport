@@ -850,23 +850,27 @@ body.full-map #map{
 }
 
 /* Stamp date overlay (printed on stamp) */
-.passport .stamp{
-  position:relative;
+.passport .stamp {
+  position: relative;
 }
 
-.passport .stamp .stamp-date.on-stamp{
-  position:absolute;
-  bottom:4px;
-  right:-4px;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:#4b5569;
-  opacity:0.9;
-  transform:rotate(-14deg);
-  background:rgba(255,255,255,0.4);
-  padding:2px 6px;
-  border-radius:999px;
-  box-shadow:0 0 0 1px rgba(0,0,0,0.04);
+.passport .stamp .stamp-date.on-stamp {
+  position: absolute;
+  /* position roughly over the bottom of the circle */
+  top: 18px;
+  left: 10px;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+
+  /* make it look like ink */
+  color: #d24b3a;          /* closer to your red stamp */
+  opacity: 0.9;
+
+  /* optional: very subtle background so it’s readable */
+  background: rgba(255,255,255,0.3);
+  padding: 1px 4px;
+  border-radius: 999px;
 }
