@@ -743,3 +743,10 @@ body.full-map #map{
   margin-bottom: 1rem;              /* keep a bit of space above the map */
   padding: 0 20px;                  /* controls how far from the edges */
 }
+.controls.arrow-controls {
+  display: flex;
+  justify-content: space-between;  /* push arrows to left & right */
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;                /* adjust edge spacing if you like */
+}
