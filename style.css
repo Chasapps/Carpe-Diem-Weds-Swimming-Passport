@@ -7,7 +7,7 @@
 /* Global base ------------------------------------------------------------- */
 :root{
   /* Deep inky navy from crest background */
-  --bg-navy: #102133;
+  --bg-navy: #09141E;
 
   /* Foil gold tuned slightly cooler + brighter */
   --gold:#D1B36F;
@@ -47,7 +47,7 @@ html,body{
 
 .splash-body{
   min-height:100vh;
-  background-color: #102133;
+  background-color: #09141E;
   background-image:url("carpe-diem.png");
   background-repeat:no-repeat;
   background-position:center 44%;
@@ -183,7 +183,7 @@ header.glass{
   padding:4px 10px;
   border-radius:999px;
   background:var(--bg-navy);
-  color:#FDF7E3;
+  color:#09141E;
   box-shadow:0 5px 14px rgba(14,36,54,.45);
 }
 
@@ -211,7 +211,7 @@ button, .pill{
 
 .pill.primary{
   background:var(--bg-navy);
-  color:#FDF7E3;
+  color:#09141E;
   border-color:var(--bg-navy);
   box-shadow:
     0 8px 18px rgba(14,36,54,.35),
