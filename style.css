@@ -718,3 +718,20 @@ body.full-map #map{
     height:calc(100vh - 200px);
   }
 }
+.arrow-container {
+    display: flex;
+    justify-content: space-between; /* pushes one arrow left, the other right */
+    align-items: center;
+    width: 100%;
+}
+
+.arrow-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #F2EFD9; /* whatever your circle colour is */
+}
