@@ -735,3 +735,11 @@ body.full-map #map{
     border: none;
     background-color: #F2EFD9; /* whatever your circle colour is */
 }
+.arrow-controls {
+  display: flex;
+  justify-content: space-between;   /* left & right edges */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;              /* keep a bit of space above the map */
+  padding: 0 20px;                  /* controls how far from the edges */
+}
