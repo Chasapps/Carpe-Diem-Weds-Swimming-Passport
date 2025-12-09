@@ -22,15 +22,15 @@
   --accent-soft:#E9EDF2;   /* very light neutral with tiny blue/grey */
 
   /* Light UI for main app */
-  --pill-bg:#F5F2EA;       /* slightly lighter, less yellow */
-  --pill-border:#D8C5A0;   /* gold-tinted border, softer */
+  --pill-bg:#F5F2EA;
+  --pill-border:#D8C5A0;
   --card-bg:#FFFFFF;
   --card-shadow:0 14px 35px rgba(7,20,34,.16);
 
   --radius-card:18px;
   --radius-pill:999px;
   --name-top:8%;
-  --page-bg:#F6F3EC;       /* warm but not too beige */
+  --page-bg:#F6F3EC;
 }
 
 html,body{
@@ -47,7 +47,7 @@ html,body{
 
 .splash-body{
   min-height:100vh;
-  background-color: #09141E;
+  background-color: var(--bg-navy);
   background-image:url("carpe-diem.png");
   background-repeat:no-repeat;
   background-position:center 44%;
@@ -69,10 +69,6 @@ html,body{
   padding:0 12px;
   pointer-events:none;
 }
-
-
-
-
 
 .foil-emboss{
   background-image:linear-gradient(
@@ -102,20 +98,6 @@ html,body{
   display:inline-block;
   pointer-events:auto;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #btnYes{
   background:var(--gold);
@@ -183,7 +165,7 @@ header.glass{
   padding:4px 10px;
   border-radius:999px;
   background:var(--bg-navy);
-  color:#09141E;
+  color:var(--accent-soft); /* unified contrast-safe color */
   box-shadow:0 5px 14px rgba(14,36,54,.45);
 }
 
@@ -211,7 +193,7 @@ button, .pill{
 
 .pill.primary{
   background:var(--bg-navy);
-  color:#09141E;
+  color:var(--accent-soft); /* ensure readable */
   border-color:var(--bg-navy);
   box-shadow:
     0 8px 18px rgba(14,36,54,.35),
@@ -348,7 +330,6 @@ main{
   margin-top:6px !important;
   margin-left:6px !important;
 }
-
 
 .map-toggle{
   position:absolute;
@@ -523,17 +504,13 @@ body.full-map #map{
   }
 }
 
-/* --- iPhone Map FIX (Leaflet requires a real height) --- */
-
+/* --- iPhone Map FIX --- */
 @supports (-webkit-touch-callout: none) {
-
-  /* Force the main area to expand to real usable height */
   main {
     height: auto !important;
     min-height: calc(100vh - 120px) !important;
   }
 
-  /* Stack mode layout fix */
   .content-split {
     display: flex !important;
     flex-direction: column !important;
@@ -541,7 +518,6 @@ body.full-map #map{
     min-height: calc(100vh - 160px) !important;
   }
 
-  /* Let the map expand fully */
   .map-wrap {
     flex: 1 1 auto !important;
     min-height: 300px !important;
@@ -553,32 +529,72 @@ body.full-map #map{
   }
 }
 
-/* === SINGLE-CARD LAYOUT: NAME → BIG ARROWS → MAP ======================= */
+/* NAME → BIG ARROWS → MAP */
 
-/* Pool name header inside the map card */
-.pool-header {
-  margin-bottom: 4px;
+.map-layout{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 
-/* Center the up/down arrows and space them nicely */
-.controls.arrow-controls {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  margin: 8px 0 10px;
+.pool-header{
+  margin-bottom:4px;
 }
 
-/* Make the arrows BIG */
-.arrow-pill {
-  font-size: 36px;
-  line-height: 1;
-  padding: 8px 24px;
+.controls.big-arrows{
+  display:flex;
+  justify-content:center;
+  gap:32px;
+  margin-bottom:4px;
 }
 
-/* #poolList now only holds one row, so let it size naturally */
-#poolList {
-  max-height: none;
-  overflow: visible;
+.arrow-pill{
+  font-size:40px;
+  padding:10px 22px;
+  border-radius:999px;
+}
+
+#poolList{
+  max-height:none;
+  overflow:visible;
+}
+
+#map,
+.pool-map {
+  width: 100%;
+  min-height: 320px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.stamp-date{
+  font-size:11px;
+  font-weight:600;
+  color:#6c7486;
+  letter-spacing:.05em;
+  margin-top:2px;
+  cursor:pointer;
+}
+
+.passport .stamp{
+  position:relative;
+}
+
+.passport .stamp .stamp-date.on-stamp{
+  position:absolute;
+  bottom:4px;
+  right:-4px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#4b5569;
+  opacity:0.9;
+  transform:rotate(-14deg);
+  background:rgba(255,255,255,0.4);
+  padding:2px 6px;
+  border-radius:999px;
+  box-shadow:0 0 0 1px rgba(0,0,0,0.04);
 }
 
 /* =======================================================================
@@ -660,7 +676,6 @@ body.full-map #map{
   background-color:#6c8ab4;
 }
 
-/* Marker appearance for overview page */
 .overview-marker{
   width:22px;
   height:22px;
@@ -698,86 +713,8 @@ body.full-map #map{
   .overview-main{
     padding:10px 8px 16px;
   }
+
   #overviewMap{
     height:calc(100vh - 200px);
   }
-}
-.map-layout{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.pool-header{
-  /* optional extra spacing for the name row */
-  margin-bottom:4px;
-}
-
-.controls.big-arrows{
-  display:flex;
-  justify-content:center;
-  gap:32px;
-  margin-bottom:4px;
-}
-
-.arrow-pill{
-  font-size:40px;      /* make arrows BIG */
-  padding:10px 22px;
-  border-radius:999px;
-}
-
-/* since poolList is now just one row, let it size naturally */
-#poolList{
-  max-height:none;
-  overflow:visible;
-}
-/* NAME → BIG ARROWS → MAP layout fix */
-
-.map-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Make sure the map actually has some height */
-#map,
-.pool-map {
-  width: 100%;
-  min-height: 320px;        /* you can change to 50vh or 400px if you like */
-  border-radius: 18px;      /* optional, to match cards */
-  overflow: hidden;
-}
-
-
-
-
-.stamp-date{
-  font-size:11px;
-  font-weight:600;
-  color:#6c7486;
-  letter-spacing:.05em;
-  margin-top:2px;
-  cursor:pointer;
-}
-
-/* Stamp date overlay (printed on stamp) */
-.passport .stamp{
-  position:relative;
-}
-
-.passport .stamp .stamp-date.on-stamp{
-  position:absolute;
-  bottom:4px;
-  right:-4px;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:#4b5569;
-  opacity:0.9;
-  transform:rotate(-14deg);
-  background:rgba(255,255,255,0.4);
-  padding:2px 6px;
-  border-radius:999px;
-  box-shadow:0 0 0 1px rgba(0,0,0,0.04);
 }
